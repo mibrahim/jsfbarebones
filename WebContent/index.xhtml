@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Celsius to Fahrenheit Convertor</title>
+</h:head>
+<h:body>
+	<p:themeSwitcher style="width:150px">
+
+		<f:selectItem itemLabel="Choose Theme" itemValue="" />
+
+		<f:selectItems value="#{bean.themes}" />
+	</p:themeSwitcher>
+
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Celsius"></h:outputLabel>
+				<h:inputText value="#{temperatureConverter.celsius}"></h:inputText>
+			</h:panelGrid>
+			<h:commandButton action="#{temperatureConverter.celsiusToFahrenheit}"
+				value="Calculate"></h:commandButton>
+			<h:commandButton action="#{temperatureConverter.reset}" value="Reset"></h:commandButton>
+			<h:messages layout="table"></h:messages>
+		</h:form>
+
+		<h:panelGroup rendered="#{temperatureConverter.initial!=true}">
+			<h3>Result</h3>
+			<h:outputLabel value="Fahrenheit "></h:outputLabel>
+			<h:outputLabel value="#{temperatureConverter.fahrenheit}"></h:outputLabel>
+		</h:panelGroup>
+	</f:view>
+	<p:editor />
+	<p:accordionPanel>
+		<p:tab title="First Tab Title">
+			<h:outputText value="Lorem" />
+			...More content for first tab
+		</p:tab>
+		<p:tab title="Second Tab Title">
+			<h:outputText value="Ipsum" />
+		</p:tab>
+	</p:accordionPanel>
+</h:body>
+</html>
